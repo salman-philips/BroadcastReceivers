@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:allowBackup="true"
@@ -27,24 +26,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-<!--the receiver registered in the manifest file is implicit which means the receiver  class
-name or the package name is not explicitly called for an event occurrence instead the system events
-that dictate the submission of such event change to the application send it has been registered as intent
-filter actions, thing to be noted over here is that the actions registered as a part of intent filter
- dictate the delivery of event change to the applications rather than the receiver being explicitly
- referred through its package name or user ID whatever they call it-->
-
-<!--There are concerns for example the connectivity change action has been deprecated api
-level 25 which means if you try to see the connectivity change events Bing listen as a part of the
- broadcast receiver It won't happen it will be always below API level 25 above which they suggest
-  to use a work manager for a connectivity change or some listener-->
-        <receiver android:name=".broadcastreceiver.NormalBroadCastReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>
